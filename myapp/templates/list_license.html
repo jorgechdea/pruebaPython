@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Software Licenses Manager</title>
+  </head>
+  <body>
+    <h1>Aqui va el listado</h1>
+
+    <form action="{% url 'create_license' %}" method="post">
+      {% csrf_token %}
+
+      <input type="text" name="companyName" placeholder="companyName" />
+      <input type="text" name="userName" placeholder="userName" />
+      <input type="text" name="jobTitle" placeholder="jobTitle" />
+      <input type="text" name="email" placeholder="email" />
+      <input
+        type="text"
+        name="softwareUserName"
+        placeholder="softwareUserName"
+      />
+      <input type="text" name="version" placeholder="version" />
+      <input type="date" name="expirationDate" />
+
+      <button>Save</button>
+    </form>
+
+    {% for license in licenses %}
+    <div>
+      <h2>{{license.companyName}}</h2>
+      <h3>{{license.userName}}</h3>
+      <h3>{{license.email}}</h3>
+      <h3>{{license.softwareUserName}}</h3>
+      <h4>Expiration: {{license.expirationDate}}</h4>
+      <h4>Version: {{license.version}}</h4>
+      <form action="{% url 'delete_license' license.id %}" method="POST">
+        {% csrf_token %}
+        <button>Delete</button>
+      </form>
+    </div>
+
+    {% empty %}
+    <h1>No hay licencias registradas</h1>
+    {% endfor %}
+  </body>
+</html>
