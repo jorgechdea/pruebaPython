@@ -1,0 +1,23 @@
+<h1>Update License</h1>
+
+<form action="{% url 'update_license' license.id %}" method="post">
+  {% csrf_token %}
+
+  <input type="text" name="companyName" value="{{ license.companyName }}" />
+  <input type="text" name="userName" value="{{ license.userName }}" />
+  <input type="text" name="jobTitle" value="{{ license.jobTitle }}" />
+  <input type="text" name="email" value="{{ license.email }}" />
+  <input
+    type="text"
+    name="softwareUserName"
+    value="{{ license.softwareUserName }}"
+  />
+  <input type="text" name="version" value="{{ license.version }}" />
+  <input
+    type="date"
+    name="expirationDate"
+    value="{{ license.expirationDate|date:'Y-m-d' }}"
+  />
+
+  <button>Save</button>
+</form>

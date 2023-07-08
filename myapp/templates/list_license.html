@@ -6,9 +6,10 @@
     <title>Software Licenses Manager</title>
   </head>
   <body>
-    <h1>Aqui va el listado</h1>
+    <h1>Licencias de Software</h1>
+    <a href="/license/new_license/">Add</a>
 
-    <form action="{% url 'create_license' %}" method="post">
+    <!-- <form action="{% url 'create_license' %}" method="post">
       {% csrf_token %}
 
       <input type="text" name="companyName" placeholder="companyName" />
@@ -24,9 +25,9 @@
       <input type="date" name="expirationDate" />
 
       <button>Save</button>
-    </form>
+    </form> -->
 
-    {% for license in licenses %}
+    <!-- {% for license in licenses %}
     <div>
       <h2>{{license.companyName}}</h2>
       <h3>{{license.userName}}</h3>
@@ -38,10 +39,50 @@
         {% csrf_token %}
         <button>Delete</button>
       </form>
+      <a href="{% url 'update_license' license.id %}">
+        <button>Update</button>
+      </a>
     </div>
 
     {% empty %}
     <h1>No hay licencias registradas</h1>
-    {% endfor %}
+    {% endfor %} -->
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>User</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Expiration Date</th>
+        <th>Version</th>
+        <th></th>
+        <th></th>
+      </tr>
+      {% for license in licenses %}
+      <tr>
+        <td>{{ license.companyName }}</td>
+        <td>{{ license.userName }}</td>
+        <td>{{ license.email }}</td>
+        <td>{{ license.softwareUserName }}</td>
+        <td>{{ license.expirationDate }}</td>
+        <td>{{ license.version }}</td>
+        <td>
+          <a href="{% url 'update_license' license.id %}">
+            <button>Update</button>
+          </a>
+        </td>
+        <td>
+          <form action="{% url 'delete_license' license.id %}" method="POST">
+            {% csrf_token %}
+            <button>Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7">No hay licencias registradas</td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>

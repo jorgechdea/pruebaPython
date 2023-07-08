@@ -1,0 +1,15 @@
+<h1>Add new license</h1>
+
+<form action="{% url 'create_license' %}" method="post">
+  {% csrf_token %}
+
+  <input type="text" name="companyName" placeholder="companyName" />
+  <input type="text" name="userName" placeholder="userName" />
+  <input type="text" name="jobTitle" placeholder="jobTitle" />
+  <input type="text" name="email" placeholder="email" />
+  <input type="text" name="softwareUserName" placeholder="softwareUserName" />
+  <input type="text" name="version" placeholder="version" />
+  <input type="date" name="expirationDate" />
+
+  <button>Save</button>
+</form>
