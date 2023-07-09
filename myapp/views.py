@@ -4,7 +4,7 @@ from .models import License
 # Create your views here.
 
 def hello(request):
-    return HttpResponse("<h1>Hello world</h1>")
+    return render(request, 'home.html')
 
 def about(request):
     return HttpResponse("<h1>About</h1>")

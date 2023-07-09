@@ -4,8 +4,5 @@ urlpatterns = [
     path('', list_license),
     path('new_license/', create_license, name="create_license"),
     path('delete_license/<int:license_id>/', delete_license, name="delete_license"),
-    # path('update_license/<int:license_id>/', update_license, name="update_license")
     path('license/<int:license_id>/update/', update_license, name='update_license'),
-
-
 ]

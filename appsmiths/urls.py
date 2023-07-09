@@ -22,6 +22,5 @@ from myapp.views import about
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', hello ),
-    path('about', about),
     path('license/', include('myapp.urls'))
 ]

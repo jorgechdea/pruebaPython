@@ -1,3 +1,4 @@
+{% extends 'base.html' %} {% block content %}
 <h1>Update License</h1>
 
 <form action="{% url 'update_license' license.id %}" method="post">
@@ -21,3 +22,4 @@
 
   <button>Save</button>
 </form>
+{% endblock %}
