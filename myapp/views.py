@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import License
 # Create your views here.
 
 def hello(request):
-    return HttpResponse("<h1>Hello world</h1>")
+    return render(request, 'home.html')
 
 def about(request):
     return HttpResponse("<h1>About</h1>")
@@ -14,9 +14,47 @@ def list_license(request):
     return render(request, 'list_license.html', {"licenses": licenses})
 
 def create_license(request):
-    license = License(companyName=request.POST['companyName'], userName=request.POST['userName'], jobTitle=request.POST['jobTitle'], email=request.POST['email'], softwareUserName=request.POST['softwareUserName'], expirationDate=request.POST['expirationDate'], version=request.POST['version'] )
-    license.save()
-    return redirect('/license/')
+    if request.method == 'POST':
+        company_name = request.POST.get('companyName').title()
+        user_name = request.POST.get('userName').title()
+        job_title = request.POST.get('jobTitle').title()
+        email = request.POST.get('email')
+        software_user_name = request.POST.get('softwareUserName')
+        expiration_date = request.POST.get('expirationDate')
+        version = request.POST.get('version')
+
+        license = License(
+            companyName=company_name,
+            userName=user_name,
+            jobTitle=job_title,
+            email=email,
+            softwareUserName=software_user_name,
+            expirationDate=expiration_date,
+            version=version
+        )
+        license.save()
+
+        return redirect('/license/')
+    else:
+        return render(request, 'create_license.html')
+
+def update_license(request, license_id):
+    license = get_object_or_404(License, pk=license_id)
+
+    if request.method == 'POST':
+        license.companyName = request.POST.get('companyName').title()
+        license.userName = request.POST.get('userName').title()
+        license.jobTitle = request.POST.get('jobTitle').title()
+        license.email = request.POST.get('email')
+        license.softwareUserName = request.POST.get('softwareUserName')
+        license.version = request.POST.get('version')
+        license.expirationDate = request.POST.get('expirationDate')
+        license.save()
+
+        return redirect('/license/')
+    else:
+        return render(request, 'update_license.html', {'license': license})
+
 
 def delete_license(request, license_id):
     licensedelete = License.objects.get(id=license_id)

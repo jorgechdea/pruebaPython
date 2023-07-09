@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %}
+<main class="container py-5">
+  <section class="card card-body">
+    <div class="d-flex justify-content-center">
+      <h1>Add new license</h1>
+    </div>
+
+    <form action="{% url 'create_license' %}" method="post">
+      {% csrf_token %}
+
+      <!-- <input type="text" name="companyName" placeholder="companyName" />
+        <input type="text" name="userName" placeholder="userName" />
+        <input type="text" name="jobTitle" placeholder="jobTitle" />
+        <input type="text" name="email" placeholder="email" />
+        <input type="text" name="softwareUserName" placeholder="softwareUserName" />
+        <input type="text" name="version" placeholder="version" />
+        <input type="date" name="expirationDate" /> -->
+
+      <div class="form-group">
+        <label for="companyName">Company Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="companyName"
+          name="companyName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="userName">Complete User Name:</label>
+        <input type="text" class="form-control" id="userName" name="userName" />
+      </div>
+
+      <div class="form-group">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" class="form-control" id="jobTitle" name="jobTitle" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="email" name="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="softwareUserName">Username:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="softwareUserName"
+          name="softwareUserName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="version">Version:</label>
+        <input type="text" class="form-control" id="version" name="version" />
+      </div>
+
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="expirationDate"
+          name="expirationDate"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center m-2">
+        <button class="btn btn-dark">Add</button>
+      </div>
+    </form>
+  </section>
+</main>
+{% endblock %}
