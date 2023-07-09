@@ -15,9 +15,9 @@ def list_license(request):
 
 def create_license(request):
     if request.method == 'POST':
-        company_name = request.POST.get('companyName')
-        user_name = request.POST.get('userName')
-        job_title = request.POST.get('jobTitle')
+        company_name = request.POST.get('companyName').title()
+        user_name = request.POST.get('userName').title()
+        job_title = request.POST.get('jobTitle').title()
         email = request.POST.get('email')
         software_user_name = request.POST.get('softwareUserName')
         expiration_date = request.POST.get('expirationDate')
@@ -42,9 +42,9 @@ def update_license(request, license_id):
     license = get_object_or_404(License, pk=license_id)
 
     if request.method == 'POST':
-        license.companyName = request.POST.get('companyName')
-        license.userName = request.POST.get('userName')
-        license.jobTitle = request.POST.get('jobTitle')
+        license.companyName = request.POST.get('companyName').title()
+        license.userName = request.POST.get('userName').title()
+        license.jobTitle = request.POST.get('jobTitle').title()
         license.email = request.POST.get('email')
         license.softwareUserName = request.POST.get('softwareUserName')
         license.version = request.POST.get('version')

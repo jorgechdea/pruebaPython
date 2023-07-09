@@ -1,25 +1,116 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Update License</h1>
+<main class="container py-5">
+  <section class="card card-body">
+    <div class="d-flex justify-content-center">
+      <h1>Update license</h1>
+    </div>
 
-<form action="{% url 'update_license' license.id %}" method="post">
-  {% csrf_token %}
+    <!-- <form action="{% url 'update_license' license.id %}" method="post">
+      {% csrf_token %}
 
-  <input type="text" name="companyName" value="{{ license.companyName }}" />
-  <input type="text" name="userName" value="{{ license.userName }}" />
-  <input type="text" name="jobTitle" value="{{ license.jobTitle }}" />
-  <input type="text" name="email" value="{{ license.email }}" />
-  <input
-    type="text"
-    name="softwareUserName"
-    value="{{ license.softwareUserName }}"
-  />
-  <input type="text" name="version" value="{{ license.version }}" />
-  <input
-    type="date"
-    name="expirationDate"
-    value="{{ license.expirationDate|date:'Y-m-d' }}"
-  />
+      <input type="text" name="companyName" value="{{ license.companyName }}" />
+      <input type="text" name="userName" value="{{ license.userName }}" />
+      <input type="text" name="jobTitle" value="{{ license.jobTitle }}" />
+      <input type="text" name="email" value="{{ license.email }}" />
+      <input
+        type="text"
+        name="softwareUserName"
+        value="{{ license.softwareUserName }}"
+      />
+      <input type="text" name="version" value="{{ license.version }}" />
+      <input
+        type="date"
+        name="expirationDate"
+        value="{{ license.expirationDate|date:'Y-m-d' }}"
+      />
 
-  <button>Save</button>
-</form>
+      <button>Save</button>
+    </form> -->
+
+    <form action="{% url 'update_license' license.id %}" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="companyName">Company Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="companyName"
+          name="companyName"
+          value="{{ license.companyName }}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="userName">Complete User Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          name="userName"
+          value="{{ license.userName }}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="jobTitle">Job Title:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="jobTitle"
+          name="jobTitle"
+          value="{{ license.jobTitle }}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          name="email"
+          value="{{ license.email }}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="softwareUserName">Username:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="softwareUserName"
+          name="softwareUserName"
+          value="{{ license.softwareUserName }}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="version">Version:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="version"
+          name="version"
+          value="{{ license.version }}"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          id="expirationDate"
+          name="expirationDate"
+          value="{{ license.expirationDate|date:'Y-m-d' }}"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center m-2">
+        <button class="btn btn-dark">Save</button>
+      </div>
+    </form>
+  </section>
+</main>
 {% endblock %}
