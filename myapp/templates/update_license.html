@@ -5,28 +5,6 @@
       <h1>Update license</h1>
     </div>
 
-    <!-- <form action="{% url 'update_license' license.id %}" method="post">
-      {% csrf_token %}
-
-      <input type="text" name="companyName" value="{{ license.companyName }}" />
-      <input type="text" name="userName" value="{{ license.userName }}" />
-      <input type="text" name="jobTitle" value="{{ license.jobTitle }}" />
-      <input type="text" name="email" value="{{ license.email }}" />
-      <input
-        type="text"
-        name="softwareUserName"
-        value="{{ license.softwareUserName }}"
-      />
-      <input type="text" name="version" value="{{ license.version }}" />
-      <input
-        type="date"
-        name="expirationDate"
-        value="{{ license.expirationDate|date:'Y-m-d' }}"
-      />
-
-      <button>Save</button>
-    </form> -->
-
     <form action="{% url 'update_license' license.id %}" method="post">
       {% csrf_token %}
 
@@ -38,6 +16,7 @@
           id="companyName"
           name="companyName"
           value="{{ license.companyName }}"
+          required
         />
       </div>
 
@@ -49,6 +28,7 @@
           id="userName"
           name="userName"
           value="{{ license.userName }}"
+          required
         />
       </div>
 
@@ -60,6 +40,7 @@
           id="jobTitle"
           name="jobTitle"
           value="{{ license.jobTitle }}"
+          required
         />
       </div>
 
@@ -71,6 +52,7 @@
           id="email"
           name="email"
           value="{{ license.email }}"
+          required
         />
       </div>
 
@@ -82,6 +64,7 @@
           id="softwareUserName"
           name="softwareUserName"
           value="{{ license.softwareUserName }}"
+          required
         />
       </div>
 
@@ -93,6 +76,7 @@
           id="version"
           name="version"
           value="{{ license.version }}"
+          required
         />
       </div>
 
@@ -104,6 +88,7 @@
           id="expirationDate"
           name="expirationDate"
           value="{{ license.expirationDate|date:'Y-m-d' }}"
+          required
         />
       </div>
 
